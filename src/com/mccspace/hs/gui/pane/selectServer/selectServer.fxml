@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mccspace.hs.gui.pane.selectServer.Controller">
+   <center>
+      <TableView fx:id="list" prefHeight="347.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="name" prefWidth="75.0" text="服务器名称" />
+          <TableColumn fx:id="address" prefWidth="125.0" text="地址" />
+            <TableColumn fx:id="port" prefWidth="50.0" text="端口号" />
+            <TableColumn fx:id="state" prefWidth="75.0" text="状态" />
+            <TableColumn fx:id="playerNum" prefWidth="75.0" text="在线人数" />
+            <TableColumn fx:id="serverInform" prefWidth="200.0" text="服务器信息" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <VBox prefHeight="74.0" prefWidth="600.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#add" prefWidth="150.0" text="添加服务器" />
+                  <Button fx:id="editBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#edit" prefWidth="150.0" text="编辑服务器" />
+                  <Button fx:id="deleteBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#delete" prefWidth="150.0" text="删除服务器" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+                  <Button fx:id="joinBtn" maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#join" prefWidth="150.0" text="加入游戏" />
+                  <Button maxHeight="1.7976931348623157E308" mnemonicParsing="false" onAction="#back" prefWidth="150.0" text="返回" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+            <HBox prefHeight="5.0" prefWidth="200.0" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </bottom>
+</BorderPane>
