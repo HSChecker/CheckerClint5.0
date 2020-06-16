@@ -17,12 +17,12 @@
     <RowConstraints minHeight="10.0" percentHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createRoom" text="创建房间">
+      <Button fx:id="createRoom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createRoom" text="创建房间">
          <GridPane.margin>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </GridPane.margin>
       </Button>
-      <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#joinRoom" text="加入游戏" GridPane.columnIndex="1">
+      <Button fx:id="joinRoom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#joinRoom" text="加入游戏" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
          </GridPane.margin>

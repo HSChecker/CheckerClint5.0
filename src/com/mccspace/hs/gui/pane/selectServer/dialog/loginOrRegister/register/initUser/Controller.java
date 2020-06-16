@@ -100,8 +100,6 @@ public class Controller {
         data.put("birth",date.getValue().toString());
         sure_.setDisable(true);
 
-        GlobalVariable.connect.PrintPacket("initUser",data);
-
         GlobalVariable.connect.addListen(new ConnectListen("initUser") {
             @Override
             public void run(JSONObject data) throws IOException {
@@ -109,7 +107,7 @@ public class Controller {
                     Platform.runLater(()->{
                         ((Stage)pane.getScene().getWindow()).close();
                         try {
-                            GlobalVariable.connect.setName(data.getString("user"));
+                            GlobalVariable.connect.setName(user.getText());
                             GlobalVariable.stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/com/mccspace/hs/gui/pane/hall/hall.fxml"))));
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -124,6 +122,8 @@ public class Controller {
                 }
             }
         });
+
+        GlobalVariable.connect.PrintPacket("initUser",data);
     }
 
     @FXML

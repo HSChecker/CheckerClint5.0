@@ -90,8 +90,6 @@ public class Controller {
     void register(ActionEvent event) {
         var data = new JSONObject();
         data.put("CAPTCHA",CAPTCHA.getText());
-        GlobalVariable.connect.PrintPacket("matchCAPTCHA",data);
-        register.setDisable(true);
         GlobalVariable.connect.addListen(new ConnectListen("matchCAPTCHA") {
             @Override
             public void run(JSONObject data) {
@@ -133,6 +131,8 @@ public class Controller {
                 }
             }
         });
+        GlobalVariable.connect.PrintPacket("matchCAPTCHA",data);
+        register.setDisable(true);
     }
 
     @FXML

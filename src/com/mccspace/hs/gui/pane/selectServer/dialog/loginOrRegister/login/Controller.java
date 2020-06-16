@@ -65,7 +65,6 @@ public class Controller {
                 pa.put("type","userPass");
                 pa.put("num",user.getText());
                 pa.put("password",password.getText());
-                GlobalVariable.connect.PrintPacket("login",pa);
                 login.setDisable(true);
                 GlobalVariable.connect.addListen(new ConnectListen("login") {
                     @Override
@@ -91,6 +90,7 @@ public class Controller {
                         }
                     }
                 });
+                GlobalVariable.connect.PrintPacket("login",pa);
             }
         });
 

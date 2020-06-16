@@ -81,8 +81,8 @@ public class Controller {
             public void run(JSONObject data) {
                 Platform.runLater(()->{
                     myName.setText(data.getString("name"));
-                    Base64Crypto.decoderBase64File(data.getString("head"),"bin/head/"+data.getString("name")+".png");
-                    myHead.setImage(new Image("file:bin/head/"+data.getString("name")+".png"));
+                    Base64Crypto.decoderBase64File(data.getString("head"),"bin/head/"+data.getString("user")+".png");
+                    myHead.setImage(new Image("file:bin/head/"+data.getString("user")+".png"));
                 });
             }
         });

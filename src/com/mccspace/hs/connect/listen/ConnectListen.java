@@ -35,6 +35,11 @@ public abstract class ConnectListen implements ConnectIntyerface {
     }
 
     @Override
+    public String getType() {
+        return Type;
+    }
+
+    @Override
     public boolean isPermanent(){
         return always;
     }

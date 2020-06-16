@@ -90,6 +90,14 @@ public class Connect implements Runnable{
         Listen.add(ct);
     }
 
+    public void removeListen(String li){
+        for(var a:Listen){
+            if(a.getType().equals(li)){
+                Listen.remove(a);
+            }
+        }
+    }
+
     public String getName() {
         return name;
     }

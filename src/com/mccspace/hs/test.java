@@ -1,5 +1,13 @@
 package com.mccspace.hs;
 
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Polyline;
+import javafx.scene.shape.QuadCurve;
+import javafx.stage.Stage;
+
 import java.sql.*;
 
 /**
@@ -10,74 +18,29 @@ import java.sql.*;
  * @AUTHOR 韩硕~
  */
 
-public class test {
+public class test extends Application {
 
-    // MySQL 8.0 以下版本 - JDBC 驱动名及数据库 URL
-    //static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    //static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB";
+    @Override
+    public void start(Stage stage) {
+        Group root = new Group();
+        Scene scene = new Scene(root, 260, 80);
+        stage.setScene(scene);
 
-    // MySQL 8.0 以上版本 - JDBC 驱动名及数据库 URL
-    static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB?useSSL=false&serverTimezone=UTC";
+        Group g = new Group();
 
+        Polyline polyline = new Polyline();
+        polyline.getPoints().addAll(new Double[]{
+                0.0, 0.0,
+                20.0, 10.0,
+                10.0, 20.0 });
 
-    // 数据库的用户名与密码，需要根据自己的设置
-    static final String USER = "root";
-    static final String PASS = "root";
+        g.getChildren().add(polyline);
+
+        scene.setRoot(g);
+        stage.show();
+    }
 
     public static void main(String[] args) {
-        Connection conn = null;
-        Statement stmt = null;
-        try{
-            // 注册 JDBC 驱动
-            Class.forName(JDBC_DRIVER);
-
-            // 打开链接
-            System.out.println("连接数据库...");
-            conn = DriverManager.getConnection(DB_URL,USER,PASS);
-
-            // 执行查询
-            System.out.println(" 实例化Statement对象...");
-            stmt = conn.createStatement();
-            String sql;
-            sql = "SELECT id, name, url FROM websites";
-            ResultSet rs = stmt.executeQuery(sql);
-
-            // 展开结果集数据库
-            while(rs.next()){
-                // 通过字段检索
-                int id  = rs.getInt("id");
-                String name = rs.getString("name");
-                String url = rs.getString("url");
-
-                // 输出数据
-                System.out.print("ID: " + id);
-                System.out.print(", 站点名称: " + name);
-                System.out.print(", 站点 URL: " + url);
-                System.out.print("\n");
-            }
-            // 完成后关闭
-            rs.close();
-            stmt.close();
-            conn.close();
-        }catch(SQLException se){
-            // 处理 JDBC 错误
-            se.printStackTrace();
-        }catch(Exception e){
-            // 处理 Class.forName 错误
-            e.printStackTrace();
-        }finally{
-            // 关闭资源
-            try{
-                if(stmt!=null) stmt.close();
-            }catch(SQLException se2){
-            }// 什么都不做
-            try{
-                if(conn!=null) conn.close();
-            }catch(SQLException se){
-                se.printStackTrace();
-            }
-        }
-        System.out.println("Goodbye!");
+        launch(args);
     }
 }

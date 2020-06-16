@@ -17,4 +17,6 @@ public interface ConnectIntyerface{
     void run(JSONObject data) throws IOException;
     boolean isPermanent();
 
+    String getType();
+
 }
