@@ -3,12 +3,8 @@ package com.mccspace.hs;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Polyline;
-import javafx.scene.shape.QuadCurve;
 import javafx.stage.Stage;
-
-import java.sql.*;
 
 /**
  * test类

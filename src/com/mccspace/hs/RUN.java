@@ -21,9 +21,9 @@ public class RUN extends Application {
         new Start(primaryStage);
     }
 
-    public static void main(String[] ar) {
+    public static void main(String[] args) {
 
-        launch(new String[]{});
+        launch(args);
 
     }
 }
