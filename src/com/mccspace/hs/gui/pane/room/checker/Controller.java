@@ -12,10 +12,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -196,6 +193,35 @@ public class Controller {
                             gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
                         }
                     }
+                    if(data.getJSONArray("upChess") != null) {
+                        List<Object> upChess = data.getJSONArray("upChess").toList();
+                        for (int i = 0; i < 50; i++) {
+                            if (upChess.contains((Object) i))
+                                buttonList.get(i).setStyle("-fx-background-color:wheat");
+                            else
+                                buttonList.get(i).setStyle("-fx-background-color:#E0E0E0");
+                        }
+                    }
+                });
+            }
+        });
+
+
+        GlobalVariable.connect.addListen(new ConnectListen("win") {
+            @Override
+            public void run(JSONObject data) {
+                Platform.runLater(()->{
+                    if(data.getBoolean("win")){
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("游戏结果");
+                        alert.setContentText("YOU HAVE WIN！！！");
+                        alert.showAndWait();
+                    } else {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("游戏结果");
+                        alert.setContentText("YOU HAVE LOSE");
+                        alert.showAndWait();
+                    }
                 });
             }
         });
@@ -216,10 +242,9 @@ public class Controller {
                     if (i.get(0).equals(choose[0]))
                         end.add(i.get(i.size() - 1));
                 }
-                System.out.println("end=" + end);
                 if (choose[0] == -1 && start.contains(btnIndexOf)) {
                     choose[0] = btnIndexOf;
-                    btn.setDefaultButton(true);
+                    btn.setStyle("-fx-background-color:#434388");
                 } else if (choose[0] != -1 && end.contains(btnIndexOf)) {
                     for (var i : probably) {
                         if (i.get(0).equals(choose[0]) && i.get(i.size() - 1).equals(btnIndexOf)) {
@@ -227,14 +252,14 @@ public class Controller {
                             data.put("play", i);
                             GlobalVariable.connect.PrintPacket("play", data);
 
-                            buttonList.get(choose[0]).setDefaultButton(false);
+                            buttonList.get(choose[0]).setStyle("-fx-background-color:#E0E0E0");
                             choose[0] = -1;
                             break;//后期添加多路径选择
                         }
                     }
                 } else if (choose[0] != -1 && start.contains(btnIndexOf)) {
-                    btn.setDefaultButton(true);
-                    buttonList.get(choose[0]).setDefaultButton(false);
+                    btn.setStyle("-fx-background-color:#434388");
+                    buttonList.get(choose[0]).setStyle("-fx-background-color:#E0E0E0");
                     choose[0] = btnIndexOf;
                 }
             }
